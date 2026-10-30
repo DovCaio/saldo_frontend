@@ -1,0 +1,24 @@
+<h1>{{ title }}</h1>
+
+<p>Bem-vindo ao dashboard!</p>
+
+<p>{{ counter }}</p>
+
+<button (click)="incrementCounter()">Incrementa</button>
+
+<p>income: {{ balance() }}</p>
+<p>expense: {{ expenses() }}</p>
+<p>percent {{ expensePercent() }}%</p>
+
+<input
+  type="range"
+  [ngModel]="expenses()"
+  (ngModelChange)="expenses.set($event)"
+/>
+
+@for (transaction of transactions; track transaction.id) {
+  <div>
+    {{ transaction.description }}
+    {{ transaction.amount }}
+  </div>
+}
