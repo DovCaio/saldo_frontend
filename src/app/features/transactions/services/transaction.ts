@@ -13,4 +13,12 @@ export class TransactionService {
   getTransactions() {
     return this.http.get<Transaction[]>(this.API_URL);
   }
+
+  importTransactions(file: File) {
+    const formData = new FormData();
+
+    formData.append('file', file);
+
+    return this.http.post(`${this.API_URL}/import`, formData);
+  }
 }
