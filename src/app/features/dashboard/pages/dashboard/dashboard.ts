@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { TransactionService } from '../../../transactions/services/transaction';
 import { Transaction } from '../../../transactions/models/transaction';
 import { CurrencyPipe } from '@angular/common';
+import { TransactionSummary } from '../../../transactions/models/summary';
 @Component({
   selector: 'app-dashboard',
   imports: [FormsModule, CurrencyPipe],
@@ -19,11 +20,20 @@ export class Dashboard {
   }
 
   transactions = signal<Transaction[]>([]);
+  summary = signal<TransactionSummary | null>(null);
+
   ngOnInit() {
     this.transactionService.getTransactions().subscribe({
       next: (data) => {
-        console.log(data);
         this.transactions.set(data);
+      },
+      error: (error) => console.error(error),
+    });
+
+    this.transactionService.getSummary().subscribe({
+      next: (data) => {
+        console.log(data);
+        this.summary.set(data as TransactionSummary);
       },
       error: (error) => console.error(error),
     });
@@ -37,12 +47,8 @@ export class Dashboard {
     if (!file) return;
 
     this.transactionService.importTransactions(file).subscribe({
-      next: (data) => {
-        console.log(data);
-      },
-      error: (error) => {
-        console.error(error);
-      },
+      next: (data) => {},
+      error: (error) => {},
     });
   }
 }

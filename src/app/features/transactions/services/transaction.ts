@@ -21,4 +21,8 @@ export class TransactionService {
 
     return this.http.post(`${this.API_URL}/import`, formData);
   }
+
+  getSummary() {
+    return this.http.get(`${this.API_URL}/summary`);
+  }
 }
