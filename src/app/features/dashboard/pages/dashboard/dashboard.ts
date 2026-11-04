@@ -4,9 +4,10 @@ import { TransactionService } from '../../../transactions/services/transaction';
 import { Transaction } from '../../../transactions/models/transaction';
 import { CurrencyPipe } from '@angular/common';
 import { TransactionSummary } from '../../../transactions/models/summary';
+import { IncomeExpenseLine } from '../../components/income-expense-line/income-expense-line';
 @Component({
   selector: 'app-dashboard',
-  imports: [FormsModule, CurrencyPipe],
+  imports: [FormsModule, CurrencyPipe, IncomeExpenseLine],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss',
 })

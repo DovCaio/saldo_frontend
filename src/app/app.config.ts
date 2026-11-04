@@ -11,6 +11,8 @@ import localePt from '@angular/common/locales/pt';
 import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
 
+import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
+
 registerLocaleData(localePt);
 
 export const appConfig: ApplicationConfig = {
@@ -20,5 +22,6 @@ export const appConfig: ApplicationConfig = {
     provideZonelessChangeDetection(),
     provideRouter(routes),
     provideHttpClient(),
+    provideCharts(withDefaultRegisterables()),
   ],
 };

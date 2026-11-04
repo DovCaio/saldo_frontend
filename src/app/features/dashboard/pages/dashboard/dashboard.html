@@ -49,6 +49,12 @@
     </div>
   </section>
 
+  <section>
+    <app-income-expense-line
+      [series]="summary()?.series || []"
+    ></app-income-expense-line>
+  </section>
+
   <!-- Transactions -->
   <section
     class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm"

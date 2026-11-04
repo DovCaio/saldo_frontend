@@ -23,6 +23,6 @@ export class TransactionService {
   }
 
   getSummary() {
-    return this.http.get(`${this.API_URL}/summary`);
+    return this.http.get(`${this.API_URL}/summary?group_by=DAY`);
   }
 }
