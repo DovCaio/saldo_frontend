@@ -6,9 +6,16 @@ import { CurrencyPipe } from '@angular/common';
 import { TransactionSummary } from '../../../transactions/models/summary';
 import { IncomeExpenseLine } from '../../components/income-expense-line/income-expense-line';
 import { IncomeExpenseBar } from '../../components/income-expense-bar/income-expense-bar';
+import { ExpenseCategoryPie } from '../../components/expense-category-pie/expense-category-pie';
 @Component({
   selector: 'app-dashboard',
-  imports: [FormsModule, CurrencyPipe, IncomeExpenseLine, IncomeExpenseBar],
+  imports: [
+    FormsModule,
+    CurrencyPipe,
+    IncomeExpenseLine,
+    IncomeExpenseBar,
+    ExpenseCategoryPie,
+  ],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss',
 })
@@ -22,6 +29,13 @@ export class Dashboard {
   }
 
   transactions = signal<Transaction[]>([]);
+  transactionsExpends = computed(() =>
+    this.transactions().filter((transaction) => transaction.Type === 'EXPENSE'),
+  );
+  transactionsIncomes = computed(() =>
+    this.transactions().filter((transaction) => transaction.Type === 'INCOME'),
+  );
+
   summary = signal<TransactionSummary | null>(null);
 
   ngOnInit() {
@@ -34,7 +48,6 @@ export class Dashboard {
 
     this.transactionService.getSummary().subscribe({
       next: (data) => {
-        console.log(data);
         this.summary.set(data as TransactionSummary);
       },
       error: (error) => console.error(error),

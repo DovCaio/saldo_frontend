@@ -57,6 +57,16 @@
     <app-income-expense-bar
       [series]="summary()?.series || []"
     ></app-income-expense-bar>
+
+    <app-expense-category-pie
+      [transactions]="transactionsIncomes() || []"
+      [title]="'Receitas por categoria'"
+    ></app-expense-category-pie>
+
+    <app-expense-category-pie
+      [transactions]="transactionsExpends() || []"
+      [title]="'Despesas por categoria'"
+    ></app-expense-category-pie>
   </section>
 
   <!-- Transactions -->
