@@ -5,9 +5,10 @@ import { Transaction } from '../../../transactions/models/transaction';
 import { CurrencyPipe } from '@angular/common';
 import { TransactionSummary } from '../../../transactions/models/summary';
 import { IncomeExpenseLine } from '../../components/income-expense-line/income-expense-line';
+import { IncomeExpenseBar } from '../../components/income-expense-bar/income-expense-bar';
 @Component({
   selector: 'app-dashboard',
-  imports: [FormsModule, CurrencyPipe, IncomeExpenseLine],
+  imports: [FormsModule, CurrencyPipe, IncomeExpenseLine, IncomeExpenseBar],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss',
 })
