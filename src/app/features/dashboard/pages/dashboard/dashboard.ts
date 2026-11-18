@@ -30,10 +30,10 @@ export class Dashboard {
 
   transactions = signal<Transaction[]>([]);
   transactionsExpends = computed(() =>
-    this.transactions().filter((transaction) => transaction.Type === 'EXPENSE'),
+    this.transactions().filter((transaction) => transaction.type === 'EXPENSE'),
   );
   transactionsIncomes = computed(() =>
-    this.transactions().filter((transaction) => transaction.Type === 'INCOME'),
+    this.transactions().filter((transaction) => transaction.type === 'INCOME'),
   );
 
   summary = signal<TransactionSummary | null>(null);
@@ -62,8 +62,8 @@ export class Dashboard {
     if (!file) return;
 
     this.transactionService.importTransactions(file).subscribe({
-      next: (data) => {},
-      error: (error) => {},
+      next: (data) => {}, //Show a sucessful message
+      error: (error) => {}, //Sho a error message
     });
   }
 }

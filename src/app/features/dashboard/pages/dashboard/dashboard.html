@@ -87,19 +87,19 @@
         >
           <div class="min-w-0">
             <p class="truncate font-medium text-slate-800">
-              {{ transaction.Description }}
+              {{ transaction.description }}
             </p>
             <p class="mt-1 text-xs text-slate-400">
-              {{ transaction.Type }}
+              {{ transaction.type }}
             </p>
           </div>
 
           <span
             class="shrink-0 text-sm font-semibold"
-            [class.text-emerald-600]="transaction.Type === 'INCOME'"
-            [class.text-red-500]="transaction.Type !== 'INCOME'"
+            [class.text-emerald-600]="transaction.type === 'INCOME'"
+            [class.text-red-500]="transaction.type !== 'INCOME'"
           >
-            {{ transaction.AmountCents / 100 | currency: "BRL" }}
+            {{ transaction.amount_cents / 100 | currency: "BRL" }}
           </span>
         </div>
       } @empty {

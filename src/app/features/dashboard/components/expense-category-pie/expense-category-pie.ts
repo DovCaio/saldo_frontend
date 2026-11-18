@@ -35,11 +35,11 @@ export class ExpenseCategoryPie {
 
   ngOnChanges(): void {
     this.chartData = {
-      labels: this.transactions.map((item) => item.Description),
+      labels: this.transactions.map((item) => item.description),
       datasets: [
         {
           ...this.chartData.datasets[0],
-          data: this.transactions.map((item) => item.AmountCents / 100),
+          data: this.transactions.map((item) => item.amount_cents / 100),
           backgroundColor: this.transactions.map(
             () => `#${Math.floor(Math.random() * 16777215).toString(16)}`,
           ),
